@@ -7,7 +7,7 @@ import firstCodigo from "../img/Capturarpfc2.jpg"
 import secondCodigo from '../img/Capturarprfc2-2.jpg'
 
 export default function Home() {
-  const [vetor, setvetor] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);//,2,3,4,5,6,7,8,9,10   {id:2,buff:0},{id:3,buff:0},{id:4,buff:0}  {id:5,buff:0},{id:6,buff:0},{id:7,buff:0},{id:8,buff:0},{id:9,buff:0},{id:10,buff:0}
+  const [vetor, setvetor] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [string, setString] = useState('');
   const [contorno,setContorno] = useState(0);
   const [contador, setcontador] = useState(0);
