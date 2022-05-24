@@ -1,0 +1,352 @@
+.window{
+    width: 100vw;
+    height: 100vh;
+   background-color:  rgba(0, 0, 0, 0.053);
+    display: flex;
+    justify-content: center;
+}
+.container1{
+    background-color: #fff;
+    display:grid;
+    height: 100%;
+    width: 1100px;
+    grid-template-areas: "top top  top"
+                          "box1  box2 box3"
+                          "box4  box2 box3"
+                          "footer   footer  footer";
+     grid-template-columns: 45% 18% 37%;
+     grid-template-rows: 15% 40%  40% 5%;                     
+                                              
+}
+
+.topBar{
+    grid-area: top;
+    background-color: #403354;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+}
+
+.painel2{
+    grid-area: box2;
+    
+    display: flex;
+    align-items: center;
+    
+}
+/* .bufferTitle{
+    text-align: center;
+    padding-top: 25px;
+    font-size:22px;
+} */
+.boxBuffer{
+    width: 100%;
+    height: 40%;
+    
+    display:grid;
+    grid-template-areas: "title" 
+                        "top"
+                        "section2"
+                        "section3"
+                        "section4"
+                        "section5";
+    grid-template-rows: 10% 15% 15%  15% 20% 25%; 
+    padding: 10px;
+}
+.p0{
+    grid-area: title;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.p1{
+    grid-area: top;
+    background-color: #8881a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.p2{
+    grid-area: section2;
+    background-color: #c7b7e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.p3{
+    grid-area: section3;
+    background-color: #8881a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.p4{
+    grid-area: section4;
+    background-color: #51526a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.p5{
+    grid-area: section5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2b2938;
+    color: white;
+}
+.painel3{
+    grid-area: box3;
+    
+    
+}
+.codigo1{
+    width: 90%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+.img1{
+    width: 370px;
+    height: 200px;
+}
+.titleCodigo{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.codigo2{
+    width: 90%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    
+}
+.footer{
+    grid-area: footer;
+    background-color: rgba(0, 0, 0, 0.314);
+    border-top: 1px solid rgb(253, 253, 253);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box{
+    width: 100%;
+    height: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notifications{
+    width: 100%;
+    height: 30%;
+}
+.vetor{
+   width: 100%;
+   height: 100%;
+  display: flex;
+  padding: 15px;
+ 
+}
+.item{
+   height: 35px;
+    border: 1px solid black;
+    width: 100%;
+    text-align: center;
+}
+.vetorCard{
+    height: 100%;
+    width:10vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.part1{
+    grid-area: box1;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   
+    
+   
+}
+.part2{
+    grid-area: box4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.description{
+    padding-left: 25px;
+}
+.buttons{
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px 10px 15px 20px;
+    border-radius: 10px;
+    
+}
+.formBox{
+    padding: 0px 15px 0px 15px;
+    margin: 0;
+}
+.boxButtons{
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.125);
+    border-radius: 25px 25px 0px 0px;
+    padding: 20px;
+    
+}
+.titleButtons{
+    text-align: center;
+    padding-bottom: 5px;
+   
+}
+
+@media (max-width: 1000px){
+    .container1{
+        display:grid;
+        width: 768px;
+        height: 1910px;
+        grid-template-areas: "top top "
+                              "box1  box2 "
+                              "box4  box2 "
+                              "box3 box5"
+                              "box3 box5"
+                              "footer  footer";
+         grid-template-columns: 70%  30%;
+         grid-template-rows: 5% 25% 20% 25% 20% 5%;                     
+                                                  
+    }
+}
+@media (max-height: 768px){
+    .container1{
+        
+            display:grid;
+            height: 100%;
+            width: 1000px;
+            grid-template-areas: "top top  top"
+                                  "box1  box2 box3"
+                                  "box4  box2 box3"
+                                  "footer   footer  footer";
+             grid-template-columns: 45% 18% 37%;
+             grid-template-rows: 15% 40%  40% 5%;                     
+                                                      
+                         
+                                                  
+    }
+    
+    .buttons{
+        width: 100%;
+        padding: 10px 15px 10px 15px;
+        border-radius: 5px 10px 15px 20px;
+    }
+    .boxButtons{
+        height: 60%;
+        background-color: rgba(0, 0, 0, 0.125);
+        border-radius: 25px 25px 0px 0px;
+        padding: 20px 8px 5px 8px;
+        
+    }
+    .boxBuffer{
+        width: 100%;
+        height: 50%;
+        padding: 15px;
+    }
+    .codigo1{
+        width: 90%;
+        height: 44%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px;
+    }
+    .codigo2{
+        width: 90%;
+        height: 44%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px;
+    }
+}
+@media (max-width: 668px){
+    .container1{
+        
+        display:grid;
+         height: 222%; 
+        width: 100%;
+        grid-template-areas: "top "
+                              "box1  "
+                              "box4 "
+                              "box2"
+                              " box2"
+                              "box3"
+                              "footer ";
+         grid-template-columns: 100%;
+         grid-template-rows: 7% 20% 18% 10% 10% 30% 5%;                                   
+                                              
+}
+.topBar h1{
+   padding: 0px;
+   margin: 0px;
+   text-align: center;
+   font-size: 20px;
+}
+.topBar h3{
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    font-size: 15px;
+ }
+.painel2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.boxBuffer{
+    width: 52%;
+    height: 100%;
+    
+}
+.boxButtons{
+    height: 60%;
+    background-color: rgba(0, 0, 0, 0.125);
+    border-radius: 25px 25px 0px 0px;
+    padding: 20px;
+    
+}
+.bufferTitle{
+    height: 59px;
+    overflow: hidden;
+}
+
+.codigo1{
+    width: 75%;
+    height: 45%;
+   
+
+}
+.codigo2{
+    width: 75%;
+    height: 50%;
+   
+
+}
+
+}
