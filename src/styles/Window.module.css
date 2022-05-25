@@ -65,6 +65,7 @@
 .p1{
     grid-area: top;
     background-color: #8881a6;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,6 +81,7 @@
 }
 .p3{
     grid-area: section3;
+    font-weight: 700;
     background-color: #8881a6;
     display: flex;
     align-items: center;
@@ -174,7 +176,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 .part1{
     grid-area: box1;

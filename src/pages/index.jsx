@@ -6,11 +6,90 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import firstCodigo from "../img/Capturarpfc2.jpg"
 import secondCodigo from '../img/Capturarprfc2-2.jpg'
 
+class CircularQueue {
+  #list;
+  #capacity;
+  #tail = -1;
+  #head = -1;
+  #size = 0;
+
+  constructor(capacity = 10) {
+    this.#capacity = Math.max(Number(capacity), 0) || 10;
+    this.#list = Array.from({ length: this.#capacity });
+  }
+
+  get size() {
+    return this.#size;
+  }
+  get list (){
+    return this.#list;
+  }
+
+  get isFull() {
+    return this.size === this.#capacity;
+  }
+
+  get isEmpty() {
+    return this.size === 0;
+  }
+  get tail(){
+    return this.#tail;
+  }
+  get head(){
+    return this.#head;
+  }
+
+  enqueue(item) {
+    if (!this.isFull) {
+      this.#tail = (this.#tail + 1) % this.#capacity;
+      this.#list[this.#tail] = item;
+      this.#size += 1;
+
+      if (this.#head === -1) {
+        this.#head = this.#tail;
+      }
+    }
+
+    return this.#tail;
+  }
+
+  dequeue() {
+    let item = null;
+    let aux = null;
+    if (!this.isEmpty) {
+      item = this.#list[this.#head];
+      delete this.#list[this.#head];
+      aux = this.#head;
+      this.#head = (this.#head + 1) % this.#capacity;
+      this.#size -= 1;
+
+      if (!this.size) {
+        this.#head = -1;
+        this.#tail = -1;
+      }
+    }
+    return aux;
+  }
+
+  peek() {
+    return this.#list[this.#head];
+  }
+
+  toString() {
+    return this.#list.filter((el) => el !== undefined).toString();
+  }
+}
+
+    
+const cq = new CircularQueue(10);
 export default function Home() {
+  
   const [vetor, setvetor] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [string, setString] = useState('');
   const [contorno, setContorno] = useState(0);
   const [contador, setcontador] = useState(0);
+ 
+
   function executar(e) {
     e.preventDefault()
     verificar(string);
@@ -20,6 +99,7 @@ export default function Home() {
   function acumular() {
 
     // if (contador <= 9) {
+      const aux =cq.enqueue(1);
     setContorno(1)
     setcontador(state => state + 1);
 
@@ -27,6 +107,7 @@ export default function Home() {
   }
   function subtrair() {
     if (contador >= 0) {
+      cq.dequeue();
       setContorno(-1)
       setcontador(state => state - 1);
     }
@@ -35,7 +116,7 @@ export default function Home() {
     // }
   }
 
-
+ 
   let instrucoes = [];
 
   function setInstrucoes() {
@@ -47,7 +128,7 @@ export default function Home() {
   async function verificar(string) {
     // let cont = contador;
     setInstrucoes()
-    console.log(contador, instrucoes);
+
 
     for (const aux of instrucoes) {
       await new Promise(resolve => setTimeout(resolve, 1000))
@@ -60,35 +141,6 @@ export default function Home() {
         subtrair()
       }
     }
-    console.log(contador);
-    // for (var i = 0; i < string.length; i++) {
-    //   var aux = string[i].toUpperCase();
-    //   instrucoes.push(aux)
-    // if (aux == 'P') {
-    //   cont++;
-    //   acumular()
-    // } else if (aux == 'C') {
-    //   cont--;
-    //   subtrair()
-    // }
-    // if (cont < 0) {
-    //   setContorno(-1)
-    //   setcontador(0)
-    //   break
-    // } else if (cont >= 10) {
-    //   setContorno(1)
-    //   setcontador(10)
-    //   break
-    // }
-    // }
-    // if (cont < 0) {
-    //   setcontador(0)
-    //   setContorno(-1)
-    // } else { 
-    //   setcontador(cont)
-    //  }
-
-
 
   }
 
@@ -111,12 +163,13 @@ export default function Home() {
           </div>
           <div className={style.box}>
 
-            <div className={style.vetor}>
-              {vetor.map(item => (<div className={style.vetorCard} key={item} >
-                <div className={style.in}> {(item == contador) ? <ArrowDownwardIcon /> : ' '}</div>
-                <div className={(item <= contador) ? style.item + ` bg-warning` : style.item}>{item}</div>
-                <div className={style.down}> {(item == contador) ? <ArrowUpwardIcon /> : ' '}</div>
-              </div>))}
+             <div className={style.vetor}>
+               {vetor.map((item, i) => (<div className={style.vetorCard} key={Math.random()} >
+                  <div className={style.in}> {(i == cq.tail && contador>0) ? <ArrowDownwardIcon /> : ' '}</div>  
+                <div className={(1 == cq.list[i] && contador>0) ? style.item + ` bg-warning` : style.item}>{i}</div>
+                  <div className={style.down}> {(i == cq.head && contador>0) ? <ArrowUpwardIcon /> : ' '}</div>  
+              </div>
+              ))}  
             </div>
           </div>
 
@@ -141,11 +194,12 @@ export default function Home() {
         </div>
 
         <div className={style.painel2}>
+          
           <div className={style.boxBuffer}>
             <div className={style.p0 + ` pb-3`}>Memória</div>
-            <div className={style.p1}><span>P</span></div>
+            <div className={(contorno == 1) ? style.p1+` text-success ` : style.p1+` text-white`}><span>P</span></div>
             <div className={style.p2}><span>buffer[10] in, out </span></div>
-            <div className={style.p3}><span>C</span></div>
+            <div className={(contorno == -1) ? style.p3+ ` text-success` : style.p3+` text-white`}><span>C</span></div>
             <div className={style.p4}><span>...</span></div>
             <div className={style.p5}><span>Kernel</span></div>
           </div>
