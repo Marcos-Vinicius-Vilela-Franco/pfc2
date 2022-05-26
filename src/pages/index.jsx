@@ -165,9 +165,10 @@ export default function Home() {
 
              <div className={style.vetor}>
                {vetor.map((item, i) => (<div className={style.vetorCard} key={Math.random()} >
-                  <div className={style.in}> {(i == cq.tail && contador>0) ? <ArrowDownwardIcon /> : ' '}</div>  
+                 
+                  <div className={style.in}> {(i == cq.tail && contador>0) ? <div className='d-flex flex-column align-items-center'> <span>in</span> <ArrowDownwardIcon /></div> : ' '}</div>  
                 <div className={(1 == cq.list[i] && contador>0) ? style.item + ` bg-warning` : style.item}>{i}</div>
-                  <div className={style.down}> {(i == cq.head && contador>0) ? <ArrowUpwardIcon /> : ' '}</div>  
+                  <div className={style.down}> {(i == cq.head && contador>0) ?<div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span>out</span>  </div>: ' '}</div>  
               </div>
               ))}  
             </div>
