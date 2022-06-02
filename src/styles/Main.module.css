@@ -1,0 +1,115 @@
+.main{
+   height: 100vh;
+    background-image: linear-gradient(
+        350deg,
+        hsl(240deg 96% 10%) 0%,
+        hsl(240deg 84% 14%) 1%,
+        hsl(240deg 74% 17%) 2%,
+        hsl(240deg 64% 22%) 4%,
+        hsl(240deg 56% 26%) 6%,
+        hsl(240deg 49% 31%) 8%,
+        hsl(240deg 42% 37%) 12%,
+        hsl(240deg 35% 42%) 17%,
+        hsl(240deg 30% 48%) 25%,
+        hsl(240deg 29% 55%) 36%,
+        hsl(240deg 31% 61%) 55%,
+        hsl(240deg 32% 68%) 74%,
+        hsl(240deg 34% 76%) 85%,
+        hsl(240deg 35% 83%) 92%,
+        hsl(240deg 37% 92%) 97%,
+        hsl(0deg 0% 100%) 100%)
+}
+.container1{
+    height: 100vh;
+    display: grid;
+   background-color: white;
+    grid-template-areas: "top top top"
+                        "main main main"
+                        "footer footer footer";
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 15% 80% 5%;
+}
+.topBar{
+    grid-area: top;
+    color: white;
+    background-color: #403354;
+}
+.containerMain{
+    grid-area: main;
+    
+    display: flex;
+    flex-direction: column;
+}
+.titleCards{
+    width: 100%;
+    text-align: center;
+   
+}
+.footer{
+    
+    grid-area: footer;
+    padding: 10px;
+    background-color: rgba(107, 108, 109, 0.107);
+}
+.boxCards{
+    height: 100%;
+    margin: 30px 20px 20px 20px;
+    
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+    
+    border-radius: 10px;
+}
+.card{
+    height: 250px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(107, 108, 109, 0.182);
+    padding: 20px;
+    border-radius: 10px;
+    
+}
+
+  @media (max-width: 1000px){
+    .container{
+        height:  170%;
+    }
+    .boxCards{
+        
+        align-items: center;
+        flex-direction: column;
+       flex-wrap: nowrap;
+        
+    }
+    .card{margin: 15px;}
+} 
+
+@media (max-width: 668px){
+    .main{
+        width: 100%;
+        height: 100%;
+    }
+    .container{
+        overflow: hidden;
+        display: grid;
+        width: 100%;
+        height: 250vh;
+       background-color: white;
+        grid-template-areas: "top"
+                            "main"
+                            "footer";
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 82% 3%;
+        overflow: hidden;
+    }
+    
+    
+    .title{
+        font-size: 30px;
+    }
+  
+} 
