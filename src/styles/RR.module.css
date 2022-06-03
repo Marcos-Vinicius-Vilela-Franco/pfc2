@@ -33,15 +33,16 @@
             hsl(0deg 0% 100%) 100%)
 }
 .switch {
-    width: 65px;
-    height: 38px;
+    width: 55px;
+    height: 28px;
     background-color: rgba(226, 32, 10, 0.479);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     border-radius: 50px;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
+    margin-left: 20px;
   }
   
   .switch[data-isOn="true"] {
@@ -50,8 +51,8 @@
   }
   
   .handle {
-    width: 27px;
-    height: 27px;
+    width: 20px;
+    height: 20px;
     background-color: rgb(255, 255, 255);
     border-radius: 40px;
   }
@@ -63,7 +64,7 @@
       padding: 0px 80px 0px 80px;
   }
 .item {
-    height: 35px;
+    height: 50px;
     border: 1px solid black;
     width: 50px;
 

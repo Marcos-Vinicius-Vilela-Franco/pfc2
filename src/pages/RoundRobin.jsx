@@ -1,12 +1,11 @@
 import style from "../styles/RR.module.css"
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { motion } from "framer-motion";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 class CircularQueue {
     #list;
-
     #capacity;
     #tail = -1;
     #head = -1;
@@ -47,10 +46,10 @@ class CircularQueue {
         }
     }
 
-    enqueue(item) {
+    enqueue(item,id) {
         if (!this.isFull) {
             this.#tail = (this.#tail + 1) % this.#capacity;
-            this.#list[this.#tail] = item;
+            this.#list[this.#tail] = {time:item,identificador:id};
             this.#size += 1;
 
             if (this.#head === -1) {
@@ -60,6 +59,7 @@ class CircularQueue {
 
         return this.#tail;
     }
+    
 
     dequeue() {
         let item = null;
@@ -80,7 +80,7 @@ class CircularQueue {
     }
 
     peek() {
-        return this.#list[this.#head];
+        return this.#list[this.#head].time;
     }
 
     toString() {
@@ -91,7 +91,7 @@ class CircularQueue {
 
 const cq = new CircularQueue(5);
 
-let listaProntos = []// Array.from({length:5})
+let listaProntos = [];
 let listaExe = [];
 const spring = {
     type: "spring",
@@ -110,18 +110,20 @@ export default function RR() {
     const [contadorProntos, setContadorProntos] = useState(0);
     const [isOn, setIsOn] = useState(false);
    
+    function compare(a,b) {
+        if (a.time < b.time)
+           return -1;
+        if (a.time > b.time)
+          return 1;
+        return 0;
+      }
+
+
     function toggleSwitch () { 
-        cq.list.sort()
+        cq.list.sort(compare);
         setIsOn(!isOn);
-        
-       
-        
     }
      
-
-    console.log(cq.list)
-
-
     function addTimer() {
         setTimer(timer + 100)
     }
@@ -135,7 +137,7 @@ export default function RR() {
 
         if (contador <= 5) {
 
-            cq.enqueue(timer);
+            cq.enqueue(timer,contador);
             listaExe.push(timer);
             setContador(contador + 1);
 
@@ -171,9 +173,6 @@ export default function RR() {
     }
     
        
-    
-
-
     async function start() {
         let i = 0, aux2, cont = 0;
         acao2();
@@ -183,25 +182,24 @@ export default function RR() {
         if (i = cq.head == 0) {
             for (i = cq.head; !cq.isEmpty; i++) {
                 await new Promise(resolve => setTimeout(resolve, quantum))
-                // console.log("o i é:" + i);
 
-                if (cq.list[i] > 0) {
+                if (cq.list[i].time > 0) {
 
-                    aux2 = cq.list[i] - quantum;
+                    aux2 = cq.list[i].time - quantum;
                     if (aux2 > 0) {
-                        cq.list[i] = aux2;
+                        cq.list[i].time = aux2;
                     } else {
-
-                        listaProntos.push(i);
+                        const b = cq.list[i].identificador;
+                        listaProntos.push(b);
                         somarContador();
-                        //console.log(listaProntos);
-                        cq.list[i] = 0;
+                        
+                        cq.list[i].time = 0;
                     }
                 }
                 if (cq.peek() == 0) {
                     cq.dequeue()
                 }
-                //console.log("i:" + i + "executando:" + executanto);
+                
                 if (i == cq.tail || executanto == 5) {
                     i = cq.head - 1;
                     acao2()
@@ -209,59 +207,16 @@ export default function RR() {
                     acao()
                 }
                 cont++;
-                // console.log("valor de i:" + i +" valor de tail:"+cq.tail + " e head é:"+ cq.head)
+                
             }
 
-
-            // i = 0;
-            // cont=listaExe.length;
-            // while ( cont> 0) {
-            //     await new Promise(resolve => setTimeout(resolve, quantum))
-
-            //     // console.log(listaExe.length + " tamanho")
-
-            //     if (i >= listaExe.length) {
-            //         i = 0;
-            //         acaoVoltar()
-            //         // console.log("ta aqui")
-            //     }
-            //     if (listaExe[i] > 0) {
-            //         if(executanto<5){acao()}
-
-            //         let help;
-            //         help = listaExe[i] - quantum;
-            //         if (help > 0) {
-            //             listaExe[i] = help;
-
-            //         } else {
-            //             //listaProntos.push(i);
-            //             somarContador();
-            //             listaExe[i]=0;
-            //             //listaExe.splice(i, 1);
-            //             cont--;
-
-
-            //             // i--;
-            //         }
-
-            //     }
-
-
-            //     console.log("esse é o i " + i + "| tamanho: " + listaExe.length)
-            //     //console.log(listaExe + " essa")
-
-            //     i++;
-            // }
         } else {
-            alert("comando inválido, para este exemplo é nessessário começar da primeira posição")
-            //console.log(cq.size+ " tamanho")
+            alert("comando inválido, para este exemplo é nessessário começar da primeira posição");
             cq.esvaziar()
         }
         setContador(0);
         acao2();
         off();
-        
-
     }
 
     function addQuantum() {
@@ -288,18 +243,21 @@ export default function RR() {
                                 <div className={style.bufferTitle2 + ` fs-5 card-title`}>Fila de Processos </div>
                             </div>
                             <div className={style.fila}>
-                                {vetor.map((item, i) => (<div key={i} className={(executanto == i) ? style.item + ` bg-danger` : style.item}>{(cq.list[i] != undefined) ? cq.list[i] : ''} </div>))}
+                                <div className="d-flex flex-column align-items-center p-2 text-danger">
+                                <span className="border-bottom">ID</span>
+                                <span>Tempo  </span>
+                                </div>
+                                {vetor.map((item, i) => (<div key={i} className={(executanto == i) ? style.item + ` bg-danger` : style.item}>{(cq.list[i] != undefined) ? <div className="d-flex flex-column"> <span className="border-bottom">{cq.list[i].identificador}</span><span> {cq.list[i].time}</span> </div> : ''} </div>))}
                             </div>
-
-
                         </div>
                         <div className={style.painel2 + ` d-flex  flex-column align-items-center`}>
                             <div className={style.boxTungle}>
-                                <h4 className="" >Ordenar</h4>
+                                <h5 className="text-center" >Priorizar processos com menor tempo de execução</h5>
                                 <div className={style.switch} data-isOn={isOn} onClick={toggleSwitch}>
                                     <motion.div className={style.handle} layout transition={spring} />
                                 </div>
                             </div>
+                            <hr/>
                             <div className={style.boxButton + ` d-flex flex-column`}>
 
 
