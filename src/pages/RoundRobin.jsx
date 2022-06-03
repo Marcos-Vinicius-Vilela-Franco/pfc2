@@ -252,19 +252,19 @@ export default function RR() {
                         </div>
                         <div className={style.painel2 + ` d-flex  flex-column align-items-center`}>
                             <div className={style.boxTungle}>
-                                <h5 className="text-center" >Priorizar processos com menor tempo de execução</h5>
+                                <h5 className={style.textPriorizar+ ` text-center`} >Priorizar processos com menor tempo de execução</h5>
                                 <div className={style.switch} data-isOn={isOn} onClick={toggleSwitch}>
                                     <motion.div className={style.handle} layout transition={spring} />
                                 </div>
                             </div>
-                            <hr/>
+                            
                             <div className={style.boxButton + ` d-flex flex-column`}>
 
 
                                 <div className={style.spanTimer}>
                                     <h3 className={style.texto}>Tempo de execução para cada processo: {timer} Un.t</h3>
                                 </div>
-                                <div className="d-flex justify-content-around m-3 mb-5">
+                                <div className={style.addandRemove+ ` d-flex justify-content-around m-3 mb-5`}>
                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} className={style.buttonsInc + ` p-2 rounded-circle`} onClick={removeTimer} ><RemoveIcon /></motion.div>
                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className={style.buttonsInc + ` p-2 rounded-circle`} onClick={addTimer}><AddIcon /></motion.div>
 
@@ -293,7 +293,7 @@ export default function RR() {
                             </div>
                         </div>
 
-                        <div className={` d-flex flex-column align-items-center justify-content-center p-2`}>
+                        <div className={style.lista +` d-flex flex-column align-items-center justify-content-center p-2`}>
                             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} className={style.vetorProntos}>
                                 <span className={style.spanVetor}>Processos Prontos</span>
                                 {vetor.map((item, i) => (<div key={i} className={style.cardVetor}>
