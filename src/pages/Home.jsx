@@ -83,13 +83,15 @@ class CircularQueue {
 
 
 const cq = new CircularQueue(10);
+cq.enqueue(1);
+
 export default function Home() {
 
   const [vetor, setvetor] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [string, setString] = useState('');
   const [contorno, setContorno] = useState(0);
   const [contador, setcontador] = useState(0);
-
+  
 
   function executar(e) {
     e.preventDefault()
@@ -99,16 +101,17 @@ export default function Home() {
   }
   function acumular() {
 
-    if (contador <= 9) {
+    if (contador < 9) {
       const aux = cq.enqueue(1);
       setContorno(1)
       setcontador(state => state + 1);
-
+     
     }
+    
   }
   function subtrair() {
-    console.log("ta aqui " + !cq.isEmpty)
-    if (!cq.isEmpty) {
+    
+    if (cq.size>1) {
       cq.dequeue();
       setContorno(-1)
       setcontador(state => state - 1);
@@ -182,15 +185,15 @@ export default function Home() {
           </div>
           <div className={style.notifications}>
             {(contador == 0) ? <div className="alert alert-danger m-3" role="alert" >Buffer vazio, consumidor esperando pelo produtor</div> : ' '}
-            {(contador == 10) ? <div className="alert alert-danger m-3" role="alert" >Buffer cheio, produtor esperando pelo consumidor</div> : ' '}
+            {(contador == 9) ? <div className="alert alert-danger m-3" role="alert" >Buffer cheio, produtor esperando pelo consumidor</div> : ' '}
           </div>
           <div className={style.box}>
 
             <motion.div variants={container} initial="hidden" animate="visible" className={style.vetor}>
               {vetor.map((item, i) => (<div className={style.vetorCard} key={Math.random()} >
 
-                <div className={style.in}> {(i == cq.tail && contador > 0) ? <div className='d-flex flex-column align-items-center'> <span className='text-success'>in</span> <ArrowDownwardIcon /></div> : ' '}</div>
-                <motion.div variants={item1} className={(1 == cq.list[i] && contador > 0) ? style.item + ` bg-warning` : style.item}>{i}</motion.div>
+                <div className={style.in}> {(i == cq.tail) ? <div className='d-flex flex-column align-items-center'> <span className='text-success'>in</span> <ArrowDownwardIcon /></div> : ' '}</div>
+                <motion.div variants={item1} className={(1 == cq.list[i] && contador > 0 && i!=cq.tail) ? style.item + ` bg-warning` : style.item}>{i}</motion.div>
                 <div className={style.down}> {(i == cq.head && contador > 0) ? <div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span className='text-danger'>out</span>  </div> : ' '}</div>
               </div>
               ))}
@@ -221,9 +224,9 @@ export default function Home() {
 
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} className={style.boxBuffer}>
             <div className={style.p0 + ` pb-3`}>Memória</div>
-            <div className={(contorno == 1) ? style.p1 + ` text-success ` : style.p1 + ` text-white`}><span>P</span></div>
+            <div className={(contorno == 1) ? style.p1 + ` bg-success ` : style.p1 + ` text-white`}><span>P</span></div>
             <div className={style.p2}><span>buffer[10] in, out </span></div>
-            <div className={(contorno == -1) ? style.p3 + ` text-success` : style.p3 + ` text-white`}><span>C</span></div>
+            <div className={(contorno == -1) ? style.p3 + ` bg-success` : style.p3 + ` text-white`}><span>C</span></div>
             <div className={style.p4}><span>...</span></div>
             <div className={style.p5}><span>Kernel</span></div>
           </motion.div>

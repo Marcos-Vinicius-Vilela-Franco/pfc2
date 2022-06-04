@@ -1,5 +1,5 @@
 import style from "../styles/RR.module.css"
-import {  useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -46,10 +46,10 @@ class CircularQueue {
         }
     }
 
-    enqueue(item,id) {
+    enqueue(item, id) {
         if (!this.isFull) {
             this.#tail = (this.#tail + 1) % this.#capacity;
-            this.#list[this.#tail] = {time:item,identificador:id};
+            this.#list[this.#tail] = { time: item, identificador: id };
             this.#size += 1;
 
             if (this.#head === -1) {
@@ -59,7 +59,7 @@ class CircularQueue {
 
         return this.#tail;
     }
-    
+
 
     dequeue() {
         let item = null;
@@ -109,21 +109,21 @@ export default function RR() {
     const [executanto, setExecutando] = useState(-1);
     const [contadorProntos, setContadorProntos] = useState(0);
     const [isOn, setIsOn] = useState(false);
-   
-    function compare(a,b) {
+    
+    function compare(a, b) {
         if (a.time < b.time)
-           return -1;
+            return -1;
         if (a.time > b.time)
-          return 1;
+            return 1;
         return 0;
-      }
+    }
 
 
-    function toggleSwitch () { 
+    function toggleSwitch() {
         cq.list.sort(compare);
         setIsOn(!isOn);
     }
-     
+
     function addTimer() {
         setTimer(timer + 100)
     }
@@ -137,7 +137,7 @@ export default function RR() {
 
         if (contador <= 5) {
 
-            cq.enqueue(timer,contador);
+            cq.enqueue(timer, contador);
             listaExe.push(timer);
             setContador(contador + 1);
 
@@ -167,12 +167,12 @@ export default function RR() {
         setContadorProntos(contadorProntos + 1);
         //  console.log("ta aqui")
     }
-    
-    function off(){
+
+    function off() {
         setIsOn(false);
     }
-    
-       
+
+
     async function start() {
         let i = 0, aux2, cont = 0;
         acao2();
@@ -192,22 +192,25 @@ export default function RR() {
                         const b = cq.list[i].identificador;
                         listaProntos.push(b);
                         somarContador();
-                        
+
                         cq.list[i].time = 0;
                     }
                 }
                 if (cq.peek() == 0) {
                     cq.dequeue()
                 }
-                
+
                 if (i == cq.tail || executanto == 5) {
                     i = cq.head - 1;
                     acao2()
                 } else {
-                    acao()
+                    
+                   
+                        acao()
+                    
                 }
                 cont++;
-                
+
             }
 
         } else {
@@ -244,27 +247,27 @@ export default function RR() {
                             </div>
                             <div className={style.fila}>
                                 <div className="d-flex flex-column align-items-center p-2 text-danger">
-                                <span className="border-bottom">ID</span>
-                                <span>Tempo  </span>
+                                    <span className="border-bottom">ID</span>
+                                    <span>Tempo  </span>
                                 </div>
                                 {vetor.map((item, i) => (<div key={i} className={(executanto == i) ? style.item + ` bg-danger` : style.item}>{(cq.list[i] != undefined) ? <div className="d-flex flex-column"> <span className="border-bottom">{cq.list[i].identificador}</span><span> {cq.list[i].time}</span> </div> : ''} </div>))}
                             </div>
                         </div>
                         <div className={style.painel2 + ` d-flex  flex-column align-items-center`}>
                             <div className={style.boxTungle}>
-                                <h5 className={style.textPriorizar+ ` text-center`} >Priorizar processos com menor tempo de execução</h5>
+                                <h5 className={style.textPriorizar + ` text-center`} >Priorizar processos com menor tempo de execução</h5>
                                 <div className={style.switch} data-isOn={isOn} onClick={toggleSwitch}>
                                     <motion.div className={style.handle} layout transition={spring} />
                                 </div>
                             </div>
-                            
+
                             <div className={style.boxButton + ` d-flex flex-column`}>
 
 
                                 <div className={style.spanTimer}>
                                     <h3 className={style.texto}>Tempo de execução para cada processo: {timer} Un.t</h3>
                                 </div>
-                                <div className={style.addandRemove+ ` d-flex justify-content-around m-3 mb-5`}>
+                                <div className={style.addandRemove + ` d-flex justify-content-around m-3 mb-5`}>
                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} className={style.buttonsInc + ` p-2 rounded-circle`} onClick={removeTimer} ><RemoveIcon /></motion.div>
                                     <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className={style.buttonsInc + ` p-2 rounded-circle`} onClick={addTimer}><AddIcon /></motion.div>
 
@@ -293,7 +296,7 @@ export default function RR() {
                             </div>
                         </div>
 
-                        <div className={style.lista +` d-flex flex-column align-items-center justify-content-center p-2`}>
+                        <div className={style.lista + ` d-flex flex-column align-items-center justify-content-center p-2`}>
                             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} className={style.vetorProntos}>
                                 <span className={style.spanVetor}>Processos Prontos</span>
                                 {vetor.map((item, i) => (<div key={i} className={style.cardVetor}>
