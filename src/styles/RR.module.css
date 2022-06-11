@@ -45,6 +45,42 @@
     cursor: pointer;
     margin-left: 20px;
 }
+.addandRemove{
+   height: 15%;
+   width: 30%;
+}
+.TimerBox{
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+.buttons{
+    height: 15%;
+}
+.prioridadeBox{
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 25%;
+    
+}
+.switch2 {
+    width: 55px;
+    height: 28px;
+    background-color: rgba(226, 32, 10, 0.479);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 50px;
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.switch2[data-isOn2="true"] {
+    justify-content: flex-end;
+    background-color: rgba(0, 128, 0, 0.517);
+}
 
 .switch[data-isOn="true"] {
     justify-content: flex-end;
@@ -60,14 +96,15 @@
 
 .boxTungle {
     width: 100%;
+    height: 15%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 80px 0px 80px;
+    
 }
 
 .item {
-    height: 50px;
+    height: 75px;
     border: 1px solid black;
     width: 50px;
 
@@ -88,6 +125,7 @@
 
 .boxButton {
     width: 70%;
+    height: 100%;
 }
 
 .vetorProntos {
@@ -142,10 +180,9 @@
 }
 
 .spanTimer {
-    width: 100%;
-    font-weight: 400;
-    font-size: 30px;
-    text-align: center;
+    width: 70%;
+   
+    
 }
 
 .part1 {
@@ -156,7 +193,14 @@
 .buttonsInc:hover {
     background-color: rgba(63, 63, 63, 0.147);
 }
-
+.buttonsInc{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 .part2 {
     grid-area: part2;
     display: grid;
@@ -191,7 +235,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-
+    
 }
 
 .painel2 {
@@ -204,7 +248,10 @@
     border-radius: 12px 12px 0px 0px;
     border: 1px solid rgba(255, 255, 255, 0.049);
     padding: 10px;
-    border-bottom: 1px solid white;
+    border: 3px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cpuArea {
@@ -247,7 +294,30 @@
     align-items: center;
     justify-content: center;
 }
-
+.prioriBox{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+.prioriButtons{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.priori1{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+   
+}
 @media (max-width:980px) {
     .painel1 {
         height: 40%;
@@ -259,6 +329,10 @@
 
     .vetorProntos {
         width: 300px;
+    }
+    .spanTimer h5{
+        font-size: 15px;
+        
     }
 }
 
@@ -279,8 +353,14 @@
     .container1 {
         height: 250vh;
     }
+    .priori1{
+        height: 20px;
+        width: 20px;
+       
+       
+    }
+  
 }
-
 @media (max-width:330px) {
     .part2 {
         grid-area: part2;
@@ -290,6 +370,9 @@
             "p2";
         grid-template-columns: 100%;
         grid-template-rows: 25% 10% 65%;
+    }
+    .boxButton{
+        width: 90%;
     }
     .container1 {
         width: 100%;
@@ -310,13 +393,17 @@
         padding: 0px;
     }
 
-    .painel2 h3 {
-        font-size: 15px;
+    .painel2 h5 {
+        font-size: 10px;
+    }
+    .painel2 span {
+        font-size: 10px;
     }
     
 
     .addandRemove {
         margin: 0px !important;
+       
     }
 
     .cpu {
@@ -346,6 +433,44 @@
     .spanVetor {
         padding: 3px;
     }
-
-
+    .priori1{
+        height: 15px;
+        width: 15px;
+       
+       
+    }
+    .handle {
+        width: 10px;
+        height: 10px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 40px;
+    }
+    .switch {
+        width: 35px;
+        height: 20px;
+        background-color: rgba(226, 32, 10, 0.479);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 50px;
+        padding: 5px;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+    .switch2 {
+        width: 35px;
+        height: 20px;
+        background-color: rgba(226, 32, 10, 0.479);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 50px;
+        padding: 5px;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+    .item {
+        height: 75px;
+        width: 41px;
+    }
 }
