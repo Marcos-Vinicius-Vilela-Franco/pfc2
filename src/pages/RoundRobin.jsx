@@ -113,7 +113,8 @@ export default function RR() {
     const [isOn, setIsOn] = useState(false);
     const [isOn2, setIsOn2] = useState(false);
     const [prioridade, setPrioridade] = useState(3);
-console.log(executanto2)
+
+
     function priority1() {
         setPrioridade(1);
 
@@ -168,7 +169,7 @@ console.log(executanto2)
             listaExe.push(timer);
             setContador(contador + 1);
             setPrioridade(3);
-            let aux = {time:timer,id:contadorID,prio:prioridade};
+            let aux = { time: timer, id: contadorID, prio: prioridade };
             clone.push(aux);
         }
     }
@@ -208,14 +209,14 @@ console.log(executanto2)
             return 1;
         return 0;
     }
-    function zerar (){
+    function zerar() {
         setExecutando2(0);
     }
-    function somar(){
-        setExecutando2(state=> state+1);
+    function somar() {
+        setExecutando2(state => state + 1);
     }
-    function diminuir(){
-        setExecutando2(state=>state-1);
+    function diminuir() {
+        setExecutando2(state => state - 1);
     }
     async function start() {
         let i = 0, aux2, cont = 0;
@@ -224,16 +225,18 @@ console.log(executanto2)
         console.log(clone);
         somarContador(0);
         listaProntos.length = 0;
-        /*if (i = cq.head == 0) {
+        if (i = cq.head == 0) {
             for (i = cq.head; !cq.isEmpty; i++) {
-                await new Promise(resolve => setTimeout(resolve, quantum))
+
 
                 if (cq.list[i].time > 0) {
 
                     aux2 = cq.list[i].time - quantum;
                     if (aux2 > 0) {
+                        await new Promise(resolve => setTimeout(resolve, quantum))
                         cq.list[i].time = aux2;
                     } else {
+                        await new Promise(resolve => setTimeout(resolve, quantum))
                         const b = cq.list[i].identificador;
                         listaProntos.push(b);
                         somarContador();
@@ -256,48 +259,52 @@ console.log(executanto2)
                 }
                 cont++;
 
-            }*/
-            zerar(0)
-            let size=clone.length;
-             for(i=0;i<=size;i++){
-                 
-                 console.log("tamanho " +size)
-                 
-                 console.log("i:"+ i);
-                  if(i==size && i!= 0){
-                    await new Promise(resolve => setTimeout(resolve, quantum))
+            }
+            /*zerar(0)
+            let size = clone.length;
+            for (i = 0; i <= size; i++) {
+    
+                console.log("tamanho " + size)
+    
+                console.log("i:" + i);
+                if (i == size && i != 0) {
                     zerar()
-                      i=0;
-                      
-                  }
-                  
-                 if(clone[i].time > 0){
-                     let aux= clone[i].time - quantum;
-                     if(aux>0){
-                         clone[i].time=aux;
-                         
-                     }else{
-                       
-                         listaProntos.push(clone[i].id);
-                         clone.splice(i,1);
-                         
-                          size=clone.length;
-                         i=i-1;
-                         
-                     }
-                     
-                if(size==0){
-                    break;
+                    i = 0;
+    
                 }
-                somar();
-                
-             }
-             }
+    
+                if (clone[i].time > 0) {
+    
+                    let aux = clone[i].time - quantum;
+                    if (aux > 0) {
+                        clone[i].time = aux;
+                        await new Promise(resolve => setTimeout(resolve, quantum))
+                        setMostrar(i);
+    
+                    } else {
+                        await new Promise(resolve => setTimeout(resolve, quantum))
+                        setMostrar(i);
+                        listaProntos.push(clone[i].id);
+                        clone.splice(i, 1);
+    
+                        size = clone.length;
+                        i = i - 1;
+    
+                    }
+    
+    
+                    if (size == 0) {
+                        break;
+                    }
+                    somar();
+    
+                }
+            }*/
 
-        //} else {
-         //   alert("comando inválido, para este exemplo é nessessário começar da primeira posição");
-         //   cq.esvaziar()
-      //  }
+        } else {
+            alert("comando inválido, para este exemplo é nessessário começar da primeira posição");
+            cq.esvaziar()
+        }
         cq.esvaziar()
         setContador(0);
         acao2();
@@ -335,13 +342,14 @@ console.log(executanto2)
                                     <span className="border-bottom">Tempo  </span>
                                     <span>Prioridade  </span>
                                 </div>
-                                {vetor.map((item, i) => (<div key={i} className={(executanto == i) ? style.item + ` bg-danger` : style.item}>{(cq.list[i] != undefined) ? <div className="d-flex flex-column"> <span className="border-bottom">{cq.list[i].identificador}</span><span className="border-bottom"> {cq.list[i].time}</span> <span> {cq.list[i].priority}</span> </div> : ''} </div>))}
+                                {vetor.map((item, i) => (<div key={i} className={(executanto == i && cq.list[i].time != 0) ? style.item + ` bg-danger` : style.item}>{(cq.list[i] != undefined) ? <div className="d-flex flex-column"> <span className="border-bottom">{cq.list[i].identificador}</span><span className="border-bottom"> {cq.list[i].time}</span> <span> {cq.list[i].priority}</span> </div> : ''} </div>))}
 
                             </div>
-                            <div className={style.fila}>
-                            {vetor.map((item, i) => (<div key={i} className={(executanto2 == i) ? style.item + ` bg-danger` : style.item}>{(clone[i] != undefined) ? <div className="d-flex flex-column"> <span className="border-bottom">{clone[i].id}</span><span className="border-bottom"> {clone[i].time}</span> <span> {clone[i].prio}</span> </div> : ''} </div>))}
+                            {/* <div className={style.fila}>
+                                {vetor.map((item, i) => (<div key={i} className={(executanto2 == i) ? style.item + ` bg-danger` : style.item}>{(clone[i] != undefined) ? <div className="d-flex flex-column"> <span className="border-bottom">{clone[i].id}</span><span className="border-bottom"> {clone[i].time}</span> <span> {clone[i].prio}</span> </div> : ''} </div>))}
 
-                            </div>
+                            </div> */}
+
                         </div>
                         <div className={(prioridade == 1) ? style.painel2 + `  border-danger ` : (prioridade == 2) ? style.painel2 + ` border-warning` : style.painel2 + ` border-success`}>
 
@@ -355,7 +363,6 @@ console.log(executanto2)
                                     <div className={style.addandRemove + ` d-flex justify-content-around `}>
                                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} className={style.buttonsInc + `  rounded-circle`} onClick={removeTimer} ><RemoveIcon /></motion.div>
                                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className={style.buttonsInc + ` rounded-circle`} onClick={addTimer}><AddIcon /></motion.div>
-
                                     </div>
                                 </div>
                                 <div className={style.prioridadeBox}>
@@ -392,7 +399,7 @@ console.log(executanto2)
                     <div className={style.part2}>
                         <div className={style.cpuArea}>
                             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className={style.cpu}>
-                                <div className={(executanto != -1) ? style.cpuFront + ` text-danger` : style.cpuFront}><span>CPU</span>{(executanto > -1) ? `Processo ` + executanto : ''}</div >
+                                <div className={(executanto != -1) ? style.cpuFront + ` text-danger` : style.cpuFront}><span>CPU</span>{(executanto > -1 && cq.list[executanto].time > 0) ? `Processo ` + executanto : ''}</div >
                             </motion.div>
                             <div className={style.quantumBox}>
                                 <div className="d-flex flex-column ">

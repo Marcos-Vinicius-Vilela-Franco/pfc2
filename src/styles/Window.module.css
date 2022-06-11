@@ -1,44 +1,43 @@
-.window{
+.window {
     width: 100vw;
     height: 100vh;
-   /* background-color:  rgba(0, 0, 0, 0.053); */
-   background-image: linear-gradient(
-  350deg,
-  hsl(240deg 96% 10%) 0%,
-  hsl(240deg 84% 14%) 1%,
-  hsl(240deg 74% 17%) 2%,
-  hsl(240deg 64% 22%) 4%,
-  hsl(240deg 56% 26%) 6%,
-  hsl(240deg 49% 31%) 8%,
-  hsl(240deg 42% 37%) 12%,
-  hsl(240deg 35% 42%) 17%,
-  hsl(240deg 30% 48%) 25%,
-  hsl(240deg 29% 55%) 36%,
-  hsl(240deg 31% 61%) 55%,
-  hsl(240deg 32% 68%) 74%,
-  hsl(240deg 34% 76%) 85%,
-  hsl(240deg 35% 83%) 92%,
-  hsl(240deg 37% 92%) 97%,
-  hsl(0deg 0% 100%) 100%
-);
+    /* background-color:  rgba(0, 0, 0, 0.053); */
+    background-image: linear-gradient(350deg,
+            hsl(240deg 96% 10%) 0%,
+            hsl(240deg 84% 14%) 1%,
+            hsl(240deg 74% 17%) 2%,
+            hsl(240deg 64% 22%) 4%,
+            hsl(240deg 56% 26%) 6%,
+            hsl(240deg 49% 31%) 8%,
+            hsl(240deg 42% 37%) 12%,
+            hsl(240deg 35% 42%) 17%,
+            hsl(240deg 30% 48%) 25%,
+            hsl(240deg 29% 55%) 36%,
+            hsl(240deg 31% 61%) 55%,
+            hsl(240deg 32% 68%) 74%,
+            hsl(240deg 34% 76%) 85%,
+            hsl(240deg 35% 83%) 92%,
+            hsl(240deg 37% 92%) 97%,
+            hsl(0deg 0% 100%) 100%);
     display: flex;
     justify-content: center;
 }
-.container1{
+
+.container1 {
     background-color: #fff;
-    display:grid;
+    display: grid;
     height: 100%;
     width: 1100px;
-    grid-template-areas: "top top  top" 
-                          "box1  box2 box3"
-                          "box4  box2 box3"
-                          "footer   footer  footer";
-     grid-template-columns: 45% 18% 37%;
-     grid-template-rows: 15%  40%  40% 5%;                     
-                                              
+    grid-template-areas: "top top  top"
+        "box1  box2 box3"
+        "box4  box2 box3"
+        "footer   footer  footer";
+    grid-template-columns: 45% 18% 37%;
+    grid-template-rows: 15% 40% 40% 5%;
+
 }
 
-.topBar{
+.topBar {
     grid-area: top;
     background-color: #403354;
     display: flex;
@@ -48,51 +47,57 @@
     color: aliceblue;
     display: grid;
     grid-template-areas: "button title"
-                        "button title";
+        "button title";
     grid-template-columns: 10% 90%;
     grid-template-rows: 50% 50%;
 }
-.buttonVoltar{
-   grid-area: button;
+
+.buttonVoltar {
+    grid-area: button;
 }
-.titles{
+
+.titles {
     grid-area: title;
     text-align: center;
 }
-.painel2{
+
+.painel2 {
     grid-area: box2;
-    
+
     display: flex;
     align-items: center;
-    
+
 }
+
 /* .bufferTitle{
     text-align: center;
     padding-top: 25px;
     font-size:22px;
 } */
-.boxBuffer{
+.boxBuffer {
     width: 100%;
     height: 40%;
-    
-    display:grid;
-    grid-template-areas: "title" 
-                        "top"
-                        "section2"
-                        "section3"
-                        "section4"
-                        "section5";
-    grid-template-rows: 15% 15% 15%  15% 20% 20%; 
+
+    display: grid;
+    grid-template-areas: "title"
+        "top"
+        "section2"
+        "section3"
+        "section4"
+        "section5";
+    grid-template-rows: 15% 15% 15% 15% 20% 20%;
     padding: 10px;
 }
-.p0{
+
+.p0 {
     grid-area: title;
     margin: 0;
     padding: 0;
     text-align: center;
     font-size: 20px;
 }
-.p1{
+
+.p1 {
     grid-area: top;
     background-color: #8881a6;
     font-weight: 700;
@@ -101,7 +106,8 @@
     justify-content: center;
     color: white;
 }
-.p2{
+
+.p2 {
     grid-area: section2;
     background-color: #c7b7e5;
     display: flex;
@@ -109,7 +115,8 @@
     justify-content: center;
     color: white;
 }
-.p3{
+
+.p3 {
     grid-area: section3;
     font-weight: 700;
     background-color: #8881a6;
@@ -118,7 +125,8 @@
     justify-content: center;
     color: white;
 }
-.p4{
+
+.p4 {
     grid-area: section4;
     background-color: #51526a;
     display: flex;
@@ -126,7 +134,8 @@
     justify-content: center;
     color: white;
 }
-.p5{
+
+.p5 {
     grid-area: section5;
     display: flex;
     align-items: center;
@@ -134,12 +143,14 @@
     background-color: #2b2938;
     color: white;
 }
-.painel3{
+
+.painel3 {
     grid-area: box3;
-    
-    
+
+
 }
-.codigo1{
+
+.codigo1 {
     width: 90%;
     height: 35%;
     display: flex;
@@ -147,34 +158,38 @@
     justify-content: center;
     padding: 20px;
 }
-.img1{
+
+.img1 {
     width: 370px;
     height: 200px;
-   
+
 }
-.titleCodigo{
+
+.titleCodigo {
     width: 100%;
     height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.bufferTitle{
+
+.bufferTitle {
     height: 59px;
     overflow: hidden;
     margin-left: 3px;
 }
 
-.codigo2{
+.codigo2 {
     width: 90%;
     height: 35%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 20px;
-    
+
 }
-.footer{
+
+.footer {
     grid-area: footer;
     background-color: rgba(0, 0, 0, 0.314);
     border-top: 1px solid rgb(253, 253, 253);
@@ -182,132 +197,148 @@
     align-items: center;
     justify-content: center;
 }
-.box{
+
+.box {
     width: 100%;
-    height: 50%; 
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.notifications{
+
+.notifications {
     width: 100%;
     height: 30%;
 }
-.vetor{
-   width: 100%;
-   height: 100%;
-  display: flex;
-  padding: 15px;
- 
+
+.vetor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 15px;
+
 }
-.item{
-   height: 35px;
+
+.item {
+    height: 35px;
     border: 1px solid black;
     width: 100%;
     text-align: center;
 }
-.vetorCard{
+
+.vetorCard {
     height: 100%;
-    width:10vw;
-    
+    width: 10vw;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
 }
-.part1{
+
+.part1 {
     grid-area: box1;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
-   
-    
-   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+
+
 }
-.part2{
+
+.part2 {
     grid-area: box4;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
-.description{
+
+.description {
     padding-left: 25px;
 }
-.buttons{
+
+.buttons {
     width: 100%;
     padding: 20px;
     border-radius: 5px 10px 15px 20px;
     border-radius: 10px;
-    
+
 }
-.formBox{
+
+.formBox {
     padding: 0px 15px 0px 15px;
     margin: 0;
 }
-.boxButtons{
+
+.boxButtons {
     height: 50%;
     background-color: rgba(0, 0, 0, 0.125);
     border-radius: 25px 25px 0px 0px;
     padding: 20px;
-    
-}
-.titleButtons{
-    text-align: center;
-    padding-bottom: 5px;
-   
+
 }
 
-@media (max-width: 1000px){
-    .container1{
-        display:grid;
+.titleButtons {
+    text-align: center;
+    padding-bottom: 5px;
+
+}
+
+@media (max-width: 1000px) {
+    .container1 {
+        display: grid;
         width: 768px;
         height: 1910px;
         grid-template-areas: "top top "
-                              "box1  box2 "
-                              "box4  box2 "
-                              "box3 box5"
-                              "box3 box5"
-                              "footer  footer";
-         grid-template-columns: 70%  30%;
-         grid-template-rows: 5% 25% 20% 25% 20% 5%;                     
-                                                  
+            "box1  box2 "
+            "box4  box2 "
+            "box3 box5"
+            "box3 box5"
+            "footer  footer";
+        grid-template-columns: 70% 30%;
+        grid-template-rows: 5% 25% 20% 25% 20% 5%;
+
     }
 }
-@media (max-height: 768px){
-    .container1{
-        
-            display:grid;
-            height: 100%;
-            width: 1000px;
-            grid-template-areas: "top top  top"
-                                  "box1  box2 box3"
-                                  "box4  box2 box3"
-                                  "footer   footer  footer";
-             grid-template-columns: 45% 18% 37%;
-             grid-template-rows: 15% 40%  40% 5%;                     
-                                                      
-                         
-                                                  
+
+@media (max-height: 768px) {
+    .container1 {
+
+        display: grid;
+        height: 100%;
+        width: 1000px;
+        grid-template-areas: "top top  top"
+            "box1  box2 box3"
+            "box4  box2 box3"
+            "footer   footer  footer";
+        grid-template-columns: 45% 18% 37%;
+        grid-template-rows: 15% 40% 40% 5%;
+
+
+
     }
-    
-    .buttons{
+
+    .buttons {
         width: 100%;
         padding: 10px 15px 10px 15px;
         border-radius: 5px 10px 15px 20px;
     }
-    .boxButtons{
+
+    .boxButtons {
         height: 60%;
         background-color: rgba(0, 0, 0, 0.125);
         border-radius: 25px 25px 0px 0px;
         padding: 20px 8px 5px 8px;
-        
+
     }
-    .boxBuffer{
+
+    .boxBuffer {
         width: 100%;
         height: 50%;
         padding: 15px;
     }
-    .codigo1{
+
+    .codigo1 {
         width: 93%;
         height: 44%;
         display: flex;
@@ -315,7 +346,8 @@
         justify-content: center;
         padding: 15px;
     }
-    .codigo2{
+
+    .codigo2 {
         width: 93%;
         height: 44%;
         display: flex;
@@ -324,80 +356,90 @@
         padding: 15px;
     }
 }
-@media (max-width: 668px){
-    .container1{
-        
-        display:grid;
-         height: 222%; 
+
+@media (max-width: 668px) {
+    .container1 {
+
+        display: grid;
+        height: 222%;
         width: 100%;
         grid-template-areas: "top "
-                              "box1  "
-                              "box4 "
-                              "box2"
-                              " box2"
-                              "box3"
-                              "footer ";
-         grid-template-columns: 100%;
-         grid-template-rows: 6% 22% 18% 9% 10% 31% 4%;                                   
-                                              
-}
-.topBar h1{
-   padding: 0px;
-   margin: 0px;
-   text-align: center;
-   font-size: 20px;
-}
-.topBar h3{
-    padding: 0px;
-    margin: 0px;
-    text-align: center;
-    font-size: 15px;
- }
-.painel2{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
-}
-.boxBuffer{
-    width: 52%;
-    height: 100%;
-    
-}
-.boxButtons{
-    height: 60%;
-    background-color: rgba(0, 0, 0, 0.125);
-    border-radius: 25px 25px 0px 0px;
-    padding: 20px;
-    
-}
-.bufferTitle{
-    height: 59px;
-    overflow: hidden;
-    background-color:  rgba(0, 0, 0, 0.125);
-}
+            "box1  "
+            "box4 "
+            "box2"
+            " box2"
+            "box3"
+            "footer ";
+        grid-template-columns: 100%;
+        grid-template-rows: 6% 22% 18% 9% 10% 31% 4%;
 
-.painel3{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.codigo1{
-    width: 75%;
-    height: 45%;
-   
+    }
 
-}
-.codigo2{
-    width: 75%;
-    height: 50%;
-   
+    .topBar h1 {
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+        font-size: 20px;
+    }
 
-}
-.part2{
-    height: 300px;
-    justify-content: flex-start;
-}
+    .topBar h3 {
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .painel2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .boxBuffer {
+        width: 52%;
+        height: 100%;
+
+    }
+
+    .boxButtons {
+        height: 60%;
+        background-color: rgba(0, 0, 0, 0.125);
+        border-radius: 25px 25px 0px 0px;
+        padding: 20px;
+
+    }
+
+    .bufferTitle {
+        height: 59px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.125);
+    }
+
+    .painel3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .codigo1 {
+        width: 75%;
+        height: 45%;
+
+
+    }
+
+    .codigo2 {
+        width: 75%;
+        height: 50%;
+
+
+    }
+
+    .part2 {
+        height: 300px;
+        justify-content: flex-start;
+    }
 
 }
