@@ -7,6 +7,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import firstCodigo from "../img/Capturarpfc2.jpg"
 import secondCodigo from '../img/Capturarprfc2-2.jpg'
 import { motion } from "framer-motion";
+import Link from 'next/link';
 class CircularQueue {
   #list;
   #capacity;
@@ -172,7 +173,11 @@ export default function Home() {
     <div className={style.window}>
       <div className={style.container1 + ` shadow  bg-body rounded`}>
         <div className={style.topBar}>
-          <div className={style.buttonVoltar}><a className='text-light p-5' href="/"><ArrowBackIcon/></a></div>
+          <div className={style.buttonVoltar}>
+            <Link href="/">
+              <a className='text-light p-5' ><ArrowBackIcon/></a>
+            </Link>
+          </div>
           <div className={style.titles}>
             <h1>IPC com memória compartilhada </h1>
             <h3>Problema Produtor-Consumidor</h3>

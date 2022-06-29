@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Link from "next/link";
 class CircularQueue {
     #list;
     #capacity;
@@ -327,7 +328,13 @@ export default function RR() {
             <div className="container bg-white">
                 <div className={style.caontainerMain}>
                     <div className={style.topBar}>
-                        <div className={style.buttonVoltar}><a className='text-light' href="/"><ArrowBackIcon /></a></div>
+                        <div className={style.buttonVoltar}>
+                            <Link href="/">
+                                <a className='text-light'>
+                                    <ArrowBackIcon />
+                                </a>
+                            </Link>
+                        </div>
                         <div className={style.title + ` display-4 text-center pt-4 text-white`}>Escalonamento de CPU </div>
                     </div>
                     <div className={style.part1}>
@@ -351,8 +358,8 @@ export default function RR() {
                             </div> */}
 
                         </div>
-                        
-                            
+
+
                         <div className={(prioridade == 1) ? style.painel2 + `  border-danger ` : (prioridade == 2) ? style.painel2 + ` border-warning` : style.painel2 + ` border-success`}>
 
 
@@ -397,7 +404,7 @@ export default function RR() {
                                 <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} type="button" className="btn btn-success mt-2" onClick={start}>Executar</motion.button>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div className={style.part2}>
                         <div className={style.cpuArea}>
