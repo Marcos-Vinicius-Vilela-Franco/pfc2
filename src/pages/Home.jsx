@@ -191,10 +191,11 @@ export default function Home() {
 
             <motion.div variants={container} initial="hidden" animate="visible" className={style.vetor}>
               {vetor.map((item, i) => (<div className={style.vetorCard} key={Math.random()} >
-
                 <div className={style.in}> {(i == cq.tail) ? <div className='d-flex flex-column align-items-center'> <span className='text-success'>in</span> <ArrowDownwardIcon /></div> : ' '}</div>
                 <motion.div variants={item1} className={(1 == cq.list[i] && contador > 0 && i!=cq.tail) ? style.item + ` bg-warning` : style.item}>{i}</motion.div>
-                <div className={style.down}> {(i == cq.head && contador > 0) ? <div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span className='text-danger'>out</span>  </div> : ' '}</div>
+                <div className={style.down}> {(i == cq.head && contador > 0 ) ? <div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span className='text-danger'>out</span>  </div> : ' '}</div>
+                <div className={style.down}> {(cq.size==1 && i==cq.tail) ? <div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span className='text-danger'>out</span>  </div> : ' '}</div>
+
               </div>
               ))}
             </motion.div>

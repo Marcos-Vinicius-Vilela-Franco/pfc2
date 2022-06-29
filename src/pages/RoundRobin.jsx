@@ -351,6 +351,8 @@ export default function RR() {
                             </div> */}
 
                         </div>
+                        
+                            
                         <div className={(prioridade == 1) ? style.painel2 + `  border-danger ` : (prioridade == 2) ? style.painel2 + ` border-warning` : style.painel2 + ` border-success`}>
 
 
@@ -395,6 +397,7 @@ export default function RR() {
                                 <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} type="button" className="btn btn-success mt-2" onClick={start}>Executar</motion.button>
                             </div>
                         </div>
+                        
                     </div>
                     <div className={style.part2}>
                         <div className={style.cpuArea}>
