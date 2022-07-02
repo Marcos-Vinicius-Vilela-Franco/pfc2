@@ -4,8 +4,9 @@ import Image from 'next/image';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import firstCodigo from "../img/Capturarpfc2.jpg"
-import secondCodigo from '../img/Capturarprfc2-2.jpg'
+import CloseIcon from '@mui/icons-material/Close';
+// import firstCodigo from "./img/Capturarpfc2.jpg"
+// import secondCodigo from './img/Capturarprfc2-2.jpg'
 import { motion } from "framer-motion";
 import Link from 'next/link';
 class CircularQueue {
@@ -92,7 +93,15 @@ export default function Home() {
   const [string, setString] = useState('');
   const [contorno, setContorno] = useState(0);
   const [contador, setcontador] = useState(0);
-  
+  const [showHelp, setShowHelp] = useState(false);
+
+
+  function popUp() {
+    setShowHelp(true)
+  }
+  function popUpClose() {
+    setShowHelp(false)
+  }
 
   function executar(e) {
     e.preventDefault()
@@ -106,13 +115,13 @@ export default function Home() {
       const aux = cq.enqueue(1);
       setContorno(1)
       setcontador(state => state + 1);
-     
+
     }
-    
+
   }
   function subtrair() {
-    
-    if (cq.size>1) {
+
+    if (cq.size > 1) {
       cq.dequeue();
       setContorno(-1)
       setcontador(state => state - 1);
@@ -175,7 +184,7 @@ export default function Home() {
         <div className={style.topBar}>
           <div className={style.buttonVoltar}>
             <Link href="/">
-              <a className='text-light p-5' ><ArrowBackIcon/></a>
+              <a className='text-light p-5' ><ArrowBackIcon /></a>
             </Link>
           </div>
           <div className={style.titles}>
@@ -197,9 +206,9 @@ export default function Home() {
             <motion.div variants={container} initial="hidden" animate="visible" className={style.vetor}>
               {vetor.map((item, i) => (<div className={style.vetorCard} key={Math.random()} >
                 <div className={style.in}> {(i == cq.tail) ? <div className='d-flex flex-column align-items-center'> <span className='text-success'>in</span> <ArrowDownwardIcon /></div> : ' '}</div>
-                <motion.div variants={item1} className={(1 == cq.list[i] && contador > 0 && i!=cq.tail) ? style.item + ` bg-warning` : style.item}>{i}</motion.div>
-                <div className={style.down}> {(i == cq.head && contador > 0 ) ? <div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span className='text-danger'>out</span>  </div> : ' '}</div>
-                <div className={style.down}> {(cq.size==1 && i==cq.tail) ? <div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span className='text-danger'>out</span>  </div> : ' '}</div>
+                <motion.div variants={item1} className={(1 == cq.list[i] && contador > 0 && i != cq.tail) ? style.item + ` bg-warning` : style.item}>{i}</motion.div>
+                <div className={style.down}> {(i == cq.head && contador > 0) ? <div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span className='text-danger'>out</span>  </div> : ' '}</div>
+                <div className={style.down}> {(cq.size == 1 && i == cq.tail) ? <div className='d-flex flex-column align-items-center'> <ArrowUpwardIcon /><span className='text-danger'>out</span>  </div> : ' '}</div>
 
               </div>
               ))}
@@ -242,11 +251,46 @@ export default function Home() {
           <div className={(contorno == 1) ? style.codigo1 + ` shadow p-3  bg-white rounded bg-gradient-success text-white ` : style.codigo1}>
 
             <h5 className={(contorno == 1) ? ` text-success` : `text-warning`}>Produtor</h5>
-            <Image className={style.img1} src={firstCodigo} alt="codigo1" />
+            <Image className={style.img1} src="/Capturarpfc2.JPG" alt="codigo1" width={370} height={200} />
           </div>
           <div className={(contorno == -1) ? style.codigo2 + ` shadow p-3  bg-white rounded` : style.codigo2}>
             <h5 className={(contorno == -1) ? ` text-success` : `text-warning`}>Consumidor</h5>
-            <Image className={style.img1} src={secondCodigo} alt="codigo2" />
+            <Image className={style.img1} src="/Capturarpfc2-2.JPG" width={370} height={200} alt="codigo2" />
+          </div>
+          <div className={style.popUp}>
+            <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} type="button" className="btn btn-success " onClick={popUp}>Ajuda</motion.button>
+            {showHelp ?
+              <div className={style.ajuda}>
+                <div className={style.conteudoPopUp}>
+                  <div className={style.menuPopUp}>
+                    <div className={style.popUpTitle}>Ajuda</div>
+                    <div className={style.btnPopUp}>
+
+                      <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} type="button" className="btn btn-danger btn-sm " onClick={popUpClose}><CloseIcon /></motion.button>
+
+                    </div>
+                  </div>
+                  <div className={style.textoPopUp + ` h4 text-justify p-5`}>
+                    <div className='p3'>Este problema, também conhecido como problema de
+                      buffer limitado, inclui coordenar o acesso de processos a um buffer compartilhado cuja
+                      capacidade de armazenamento é limitada a 10 itens (neste exemplo). Para tanto, simularemos dois processos:
+                      <ul>
+                        <li className='p-3'> Produtor: Produz e insere um item no buffer em caso de haver um espeço. Caso
+                          contrário, será necessário esperar até que haja uma vaga. Ao depositar um item, o
+                          produtor ocupará um espaço livre.
+                        </li>
+
+                        <li className='p-3'> Consumidor: Consumirá um item do buffer, se estiver vazio, será necessário esperar
+                          o produtor depositar um novo item. Ao consumir um item, o consumidor gera um
+                          espaço livre.
+                        </li>
+                      </ul>
+                    </div>
+                    <div className='p-3'>Para executar uma sequência automaticamente use "p" para inserir (produtor) e "c" para consumir (consumidor), em seguida clique em executar. Exemplo de uma sequência: "pppcppccpcpc".</div>
+                  </div>
+                </div>
+              </div>
+              : null}
           </div>
         </div>
         <div className={style.footer}>

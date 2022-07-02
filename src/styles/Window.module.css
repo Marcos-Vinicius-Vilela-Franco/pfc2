@@ -23,6 +23,78 @@
     justify-content: center;
 }
 
+.popUp {
+    width: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    
+    
+}
+.conteudoPopUp{
+    width: 50vw;
+    height: 70vh;
+    background-color: #e0dfdfdb;
+    border-radius: 10px;
+    display: grid;
+    grid-template-areas: "title title"
+                        "cont cont";
+    grid-template-columns: 95% 5%;
+    grid-template-rows: 10% 90%;
+}
+.menuPopUp{
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+   
+}
+.btnPopUp{
+    width: 7%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+    
+}
+.popUpTitle{
+    width: 93%;
+    color:#2b2938;
+    font-weight: 400;
+    font-size:22px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.textoPopUp{
+    grid-area: cont;
+    color:#2b2938;
+    font-weight:400;
+    overflow-y: scroll;
+}
+.ajuda {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container1 {
     background-color: #fff;
     display: grid;
@@ -146,7 +218,10 @@
 
 .painel3 {
     grid-area: box3;
-
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
 }
 
@@ -299,6 +374,14 @@
         grid-template-rows: 5% 25% 20% 25% 20% 5%;
 
     }
+    .ajuda {
+        width: 768px;
+        height: 1910px;
+    }
+    .conteudoPopUp{
+        width: 90vw;
+        height: 90vh;
+    }
 }
 
 @media (max-height: 768px) {
@@ -340,7 +423,7 @@
 
     .codigo1 {
         width: 93%;
-        height: 44%;
+        height: 40%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -349,11 +432,17 @@
 
     .codigo2 {
         width: 93%;
-        height: 44%;
+        height: 40%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 15px;
+    }
+    .textoPopUp{
+        grid-area: cont;
+        color:#2b2938;
+        font-weight:100;
+        overflow-y: scroll;
     }
 }
 
@@ -367,11 +456,11 @@
             "box1  "
             "box4 "
             "box2"
-            " box2"
+            "box2"
             "box3"
             "footer ";
         grid-template-columns: 100%;
-        grid-template-rows: 6% 22% 18% 9% 10% 31% 4%;
+        grid-template-rows: 6% 22% 18% 9% 6% 35% 4%;
 
     }
 
@@ -421,6 +510,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
     }
 
     .codigo1 {
@@ -436,10 +526,22 @@
 
 
     }
-
+    .popUp {
+        grid-area: box3;
+       justify-content: center;
+    }
     .part2 {
         height: 300px;
         justify-content: flex-start;
     }
-
+    .conteudoPopUp{
+        width: 90vw;
+        height: 90vh;
+    }
+    .ajuda {
+        height: 222%;
+        width: 100%;
+        
+    }
+    
 }
