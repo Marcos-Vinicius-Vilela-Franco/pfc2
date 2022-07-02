@@ -30,7 +30,7 @@ export default function Index() {
 
                         <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }} className={style.card}>
 
-                            <h5 className="card-title  ">Escalonamento de CPU Preemptivo</h5>
+                            <h5 className="card-title  ">Escalonamento de CPU Preemptivo (Protótipo)</h5>
                             <p className="card-text text-center ">Escalonamento Preemptivo escolhe um processo e lhe concede a CPU durante certo tempo. Findado esse tempo, a CPU é de outro processo.</p>
                             {/* <a href="/RoundRobin" className="btn btn-primary">Acessar</a> */}
                             <Link href="/RoundRobin">

@@ -176,7 +176,7 @@ export default function Home() {
       opacity: 1
     }
   };
-
+  
 
   return (
     <div className={style.window}>
@@ -261,16 +261,16 @@ export default function Home() {
             <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} type="button" className="btn btn-success " onClick={popUp}>Ajuda</motion.button>
             {showHelp ?
               <div className={style.ajuda}>
-                <div className={style.conteudoPopUp}>
-                  <div className={style.menuPopUp}>
-                    <div className={style.popUpTitle}>Ajuda</div>
+                <div className={style.conteudoPopUp+ ` card`}>
+                  <div className={style.menuPopUp+ ` card-header`}>
+                    <div className={style.popUpTitle+ ` card-title`}>Ajuda</div>
                     <div className={style.btnPopUp}>
 
                       <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} type="button" className="btn btn-danger btn-sm " onClick={popUpClose}><CloseIcon /></motion.button>
 
                     </div>
                   </div>
-                  <div className={style.textoPopUp + ` h4 text-justify p-5`}>
+                  <div className={style.textoPopUp + ` card-body p-5`}>
                     <div className='p3'>Este problema, também conhecido como problema de
                       buffer limitado, inclui coordenar o acesso de processos a um buffer compartilhado cuja
                       capacidade de armazenamento é limitada a 10 itens (neste exemplo). Para tanto, simularemos dois processos:
@@ -286,7 +286,7 @@ export default function Home() {
                         </li>
                       </ul>
                     </div>
-                    <div className='p-3'>Para executar uma sequência automaticamente use "p" para inserir (produtor) e "c" para consumir (consumidor), em seguida clique em executar. Exemplo de uma sequência: "pppcppccpcpc".</div>
+                    <div className='p-3'>Para executar uma sequência automaticamente use &quot;p&quot; para inserir (produtor) e &quot;c&quot; para consumir (consumidor), em seguida clique em executar. Exemplo de uma sequência: &quot;pppcppccpcpc&quot;.</div>
                   </div>
                 </div>
               </div>

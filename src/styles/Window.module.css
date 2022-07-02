@@ -35,7 +35,7 @@
 .conteudoPopUp{
     width: 50vw;
     height: 70vh;
-    background-color: #e0dfdfdb;
+    background-color: #e0dfdf;
     border-radius: 10px;
     display: grid;
     grid-template-areas: "title title"
@@ -75,6 +75,7 @@
     grid-area: cont;
     color:#2b2938;
     font-weight:400;
+    text-align: justify;
     overflow-y: scroll;
 }
 .ajuda {
