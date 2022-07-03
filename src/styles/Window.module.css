@@ -111,6 +111,7 @@
 }
 
 .topBar {
+    width: 100%;
     grid-area: top;
     background-color: #403354;
     display: flex;
@@ -119,16 +120,25 @@
     justify-content: center;
     color: aliceblue;
     display: grid;
-    grid-template-areas: "button title"
-        "button title";
-    grid-template-columns: 10% 90%;
+    grid-template-areas: "button title reload"
+        "button title reload";
+    grid-template-columns: 10% 80% 10%;
     grid-template-rows: 50% 50%;
 }
 
 .buttonVoltar {
     grid-area: button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.reload{
+    grid-area: reload;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
 .titles {
     grid-area: title;
     text-align: center;

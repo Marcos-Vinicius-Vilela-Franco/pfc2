@@ -5,6 +5,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
+import CachedIcon from '@mui/icons-material/Cached';
 // import firstCodigo from "./img/Capturarpfc2.jpg"
 // import secondCodigo from './img/Capturarprfc2-2.jpg'
 import { motion } from "framer-motion";
@@ -176,20 +177,28 @@ export default function Home() {
       opacity: 1
     }
   };
-  
+  function zerar() {
+    location.reload()
+  }
 
   return (
     <div className={style.window}>
+
       <div className={style.container1 + ` shadow  bg-body rounded`}>
         <div className={style.topBar}>
-          <div className={style.buttonVoltar}>
-            <Link href="/">
-              <a className='text-light p-5' ><ArrowBackIcon /></a>
+          <div className={style.buttonVoltar} nClick={zerar}>
+            <Link href="/" >
+              <a className='text-light '><ArrowBackIcon /></a>
             </Link>
           </div>
           <div className={style.titles}>
             <h1>IPC com memória compartilhada </h1>
             <h3>Problema Produtor-Consumidor</h3>
+          </div>
+          <div className={style.reload} onClick={zerar}>
+
+            <div className='text-light p-2'><CachedIcon /></div>
+
           </div>
         </div>
 
@@ -261,9 +270,12 @@ export default function Home() {
             <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} type="button" className="btn btn-success " onClick={popUp}>Ajuda</motion.button>
             {showHelp ?
               <div className={style.ajuda}>
-                <div className={style.conteudoPopUp+ ` card`}>
-                  <div className={style.menuPopUp+ ` card-header`}>
-                    <div className={style.popUpTitle+ ` card-title`}>Ajuda</div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.3 }} className={style.conteudoPopUp + ` card`}>
+                  <div className={style.menuPopUp + ` card-header`}>
+                    <div className={style.popUpTitle + ` card-title`}>Ajuda</div>
                     <div className={style.btnPopUp}>
 
                       <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} type="button" className="btn btn-danger btn-sm " onClick={popUpClose}><CloseIcon /></motion.button>
@@ -288,7 +300,8 @@ export default function Home() {
                     </div>
                     <div className='p-3'>Para executar uma sequência automaticamente use &quot;p&quot; para inserir (produtor) e &quot;c&quot; para consumir (consumidor), em seguida clique em executar. Exemplo de uma sequência: &quot;pppcppccpcpc&quot;.</div>
                   </div>
-                </div>
+
+                </motion.div>
               </div>
               : null}
           </div>
